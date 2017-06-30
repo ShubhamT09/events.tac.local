@@ -1,0 +1,28 @@
+﻿@model e.tac.local.Models.EventsList
+@using e.tac.local.Models
+@using TAC.Utils.Helpers
+
+<!-- [Event List] -->
+<div class="content-list newslist">
+    <ol class="media-list">
+        @foreach (EventDetails ed in Model.Events)
+        {
+            <li class="media media-align-middle">
+                <div class="media-left">
+                    <a href="@ed.Url">@ed.EventImage</a>
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading">
+                        <a href="@ed.Url">@ed.ContentHeading</a>
+                    </h3>
+                    <div class="description">
+                        <p>@ed.ContentIntro</p>
+                    </div>
+                </div>
+                <div class="metadata well">@ed.EventStartDate</div>
+            </li>
+        }
+    </ol>
+</div>
+<!-- [Event List] -->
+@Html.Pager(Model.PageSize, Model.TotalResultCount)
